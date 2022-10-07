@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        position: relative;
+        /* background-image: url("sky-bg.jpg");
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-size: 100% 100% !important;
+        background-attachment: fixed; */
+      }
+      body {
+        background-color: #000000 !important;
+      }
+      .btn-container {
+        position: fixed;
+        top: 90% !important;
+        left: 20%;
+        border-radius: 50px;
+      }
+
+      .msg-style {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+          rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+          rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        padding: 7px 25px;
+        font-size: 16px;
+        width: fit-content;
+        position: absolute;
+        border-radius: 40px;
+        color: #fff !important;
+        letter-spacing: 0.4px !important;
+      }
+
+      #root {
+        padding: 20px;
+      }
+
+      input:focus {
+        outline: none;
+        background-color: rgb(228, 222, 212);
+      }
+
+      input {
+        border: 2px solid red;
+        border-radius: 50px;
+        height: 50px;
+        width: 800px;
+        padding-left: 20px;
+        color: red;
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      button {
+        cursor: pointer !important;
+        padding: 2px 5px;
+        border-radius: 0 40px 40px 0;
+        height: 50px;
+        width: 100px;
+        color: red;
+        font-weight: 600;
+        font-size: 16px;
+        padding-top: 2px !important;
+        margin-left: -30px;
+        border: 2px solid red;
+        background: #000000;
+        background: -webkit-linear-gradient(to right, #0f9b0f, #000000);
+        background: linear-gradient(to right, #0f9b0f, #000000);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <form onsubmit="return false" class="btn-container">
+      <input id="box" type="text" minlength="3" />
+      <button onclick="fnc()" type="submit">Send</button>
+    </form>
+    <script>
+      const fnc = () => {
+        var txt = document.querySelector('#root')
+        var box = document.querySelector('input').value
+        var msg = document.createElement('p')
+        msg.classList.add('msg-style')
+        msg.style.marginTop =
+          Math.floor(Math.random() * (window.innerHeight - 200)) + 'px'
+        msg.style.marginBottom =
+          Math.floor(Math.random() * (window.innerHeight - 200)) + 'px'
+        msg.style.marginLeft =
+          Math.floor(Math.random() * (window.innerWidth - 200)) + 'px'
+        msg.style.marginRight =
+          Math.floor(Math.random() * (window.innerWidth - 200)) + 'px'
+        msg.style.background = randColor()
+        msg.innerHTML = box
+        if (msg.innerHTML === '') {
+          alert('Please write something')
+        } else {
+          txt.appendChild(msg)
+          empty()
+        }
+      }
+      const empty = () => {
+        document.querySelector('input').value = ''
+      }
+      const randColor = () => {
+        return (
+          '#' +
+          Math.floor(Math.random() * 16777215)
+            .toString(16)
+            .padStart(6, '0')
+            .toUpperCase()
+        )
+      }
+    </script>
+  </body>
+</html>
