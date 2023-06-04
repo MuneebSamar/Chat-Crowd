@@ -84,17 +84,24 @@
         background: -webkit-linear-gradient(to right, #0f9b0f, #000000);
         background: linear-gradient(to right, #0f9b0f, #000000);
       }
+      #error {
+        color: red;
+        font-size: 14px;
+      }
     </style>
   </head>
 
   <body>
     <div id="root"></div>
     <form onsubmit="return false" class="btn-container">
+      <div id='error'></div>
       <input id="box" type="text" minlength="3" />
       <button onclick="fnc()" type="submit">Send</button>
     </form>
     <script>
       const fnc = () => {
+        var error = document.querySelector('#error')
+        error.innerHTML = '';
         var txt = document.querySelector('#root')
         var box = document.querySelector('input').value
         var msg = document.createElement('p')
@@ -110,7 +117,7 @@
         msg.style.background = randColor()
         msg.innerHTML = box
         if (msg.innerHTML === '') {
-          alert('Please write something')
+          error.innerHTML = 'Please Enter Something';
         } else {
           txt.appendChild(msg)
           empty()
